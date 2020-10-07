@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+
+import csv
+from nltk.tokenize import word_tokenize
+import nltk
+
+
+
+def read_corpus():
+	outfile = open('converted_data.conll', 'w')
+	with open('tsd_train.csv') as data:
+		file = csv.reader(data)
+		next(file, None)
+		sent_id = 1
+		for row in file:
+			span_string = row[0].strip('][').split(', ')			
+			text = row[1].replace('\n',' ')
+			toxic_word = []
+			if len(span_string) > 1:
+				for ident in span_string:
+					toxic_word.append(text[int(ident)])
+				toxic_word=''.join(toxic_word)
+				toxic_words = toxic_word.split(' ')
+			else:
+				toxic_words = row[1]
+			#print(toxic_words)
+			tokens = word_tokenize(text)
+			pos_tags = nltk.pos_tag(tokens)
+			outfile.write('#sent_id = '+str(sent_id)+'\n')
+			outfile.write('#text = '+text+'\n')
+			outfile.write('#span = '+row[0]+'\n')
+			outfile.write('#toxic words = '+str(toxic_words)+'\n')
+			sent_id+=1
+			for i in range(len(pos_tags)):
+				pos_token = pos_tags[i]
+				if pos_token[0] in toxic_words:
+					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'1'+'\n')
+				else:
+					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'0'+'\n')
+
+			outfile.write('\n')
+
+def main():
+
+	read_corpus()
+
+if __name__ == '__main__':
+	main()
