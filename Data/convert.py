@@ -16,13 +16,15 @@ def read_corpus():
 			span_string = row[0].strip('][').split(', ')			
 			text = row[1].replace('\n',' ')
 			toxic_word = []
-			if len(span_string) > 1:
+			if span_string ==['']:
+				toxic_words = text
+			else:
 				for ident in span_string:
 					toxic_word.append(text[int(ident)])
+				
 				toxic_word=''.join(toxic_word)
 				toxic_words = toxic_word.split(' ')
-			else:
-				toxic_words = row[1]
+		
 			#print(toxic_words)
 			tokens = word_tokenize(text)
 			pos_tags = nltk.pos_tag(tokens)
@@ -34,9 +36,9 @@ def read_corpus():
 			for i in range(len(pos_tags)):
 				pos_token = pos_tags[i]
 				if pos_token[0] in toxic_words:
-					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'1'+'\n')
+					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=1'+'\n')
 				else:
-					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'0'+'\n')
+					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=0'+'\n')
 
 			outfile.write('\n')
 
