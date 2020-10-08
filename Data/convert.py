@@ -4,30 +4,40 @@ import csv
 from nltk.tokenize import word_tokenize
 import nltk
 
-
-
 def read_corpus():
-	outfile = open('converted_data.conll', 'w')
+	outfile = open('converted_data_2.conll', 'w')
 	with open('tsd_train.csv') as data:
 		file = csv.reader(data)
 		next(file, None)
 		sent_id = 1
 		for row in file:
-			span_string = row[0].strip('][').split(', ')			
 			text = row[1].replace('\n',' ')
-			toxic_word = []
-			if span_string ==['']:
+			span_string = row[0].strip('][').split(', ')
+			if span_string == ['']:
+				span =[]
+			else:
+				span = [int(e) for e in span_string]
+	
+			if span == []:
 				toxic_words = text
 			else:
-				for ident in span_string:
-					toxic_word.append(text[int(ident)])
+				toxic_word = []
+				prev_index = span[0]-1
+				for index in span:
+					if index == prev_index+1:
+						toxic_word.append(text[index])
+						prev_index = index
+					else:
+						toxic_word.append(' ')
+						toxic_word.append(text[index])
+						prev_index = index
 				
-				toxic_word=''.join(toxic_word)
+				toxic_word = ''.join(toxic_word)
 				toxic_words = toxic_word.split(' ')
 		
-			#print(toxic_words)
 			tokens = word_tokenize(text)
 			pos_tags = nltk.pos_tag(tokens)
+			print(pos_tags)
 			outfile.write('#sent_id = '+str(sent_id)+'\n')
 			outfile.write('#text = '+text+'\n')
 			outfile.write('#span = '+row[0]+'\n')
