@@ -1,19 +1,19 @@
-from flair.data import Corpus
+from flair.data import Corpus, Sentence
 from flair.datasets import ColumnCorpus
-from flair.datasets import UD_ENGLISH
 from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings
 
 # define columns
-columns = {0: 'text', 1: 'tox'}
+columns = {0: 'ID', 1: 'text', 2: 'empty_0', 3: 'pos', 4: 'empty_1',
+           5: 'empty_2', 6: 'empty_3', 7: 'empty_4', 8: 'empty_5', 9: 'tox'}
 
 # this is the folder in which train, test and dev files reside
-data_folder = ''
+data_folder = 'Data'
 
 # init a corpus using column format, data folder and the names of the train, dev and test files
 corpus: Corpus = ColumnCorpus(data_folder, columns,
-                              train_file='train',
-                              test_file='test',
-                              dev_file='dev')
+                              train_file='converted_data.conll',
+                              test_file='converted_data.conll',
+                              dev_file='converted_data.conll')
 
 print(corpus.train[0].to_tagged_string('tox'))
 
