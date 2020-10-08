@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 
 def read_corpus():
-	outfile = open('converted_data_2.conll', 'w')
+	outfile = open('converted_data.conll', 'w')
 	with open('tsd_train.csv') as data:
 		file = csv.reader(data)
 		next(file, None)
@@ -37,18 +37,21 @@ def read_corpus():
 		
 			tokens = word_tokenize(text)
 			pos_tags = nltk.pos_tag(tokens)
-			print(pos_tags)
-			outfile.write('#sent_id = '+str(sent_id)+'\n')
-			outfile.write('#text = '+text+'\n')
-			outfile.write('#span = '+row[0]+'\n')
-			outfile.write('#toxic words = '+str(toxic_words)+'\n')
+			# outfile.write('#sent_id = '+str(sent_id)+'\n')
+			# outfile.write('#text = '+text+'\n')
+			# outfile.write('#span = '+row[0]+'\n')
+			# outfile.write('#toxic words = '+str(toxic_words)+'\n')
 			sent_id+=1
+			u = '_'
 			for i in range(len(pos_tags)):
 				pos_token = pos_tags[i]
 				if pos_token[0] in toxic_words:
-					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=1'+'\n')
+					label = 1
+					# outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=1'+'\n')
 				else:
-					outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=0'+'\n')
+					label = 0
+					# outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=0'+'\n')
+				outfile.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(str(i+1), pos_token[0],u,pos_token[1],u,u,u,u,u,label))
 
 			outfile.write('\n')
 
