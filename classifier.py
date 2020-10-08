@@ -1,13 +1,24 @@
 from flair.data import Corpus
+from flair.datasets import ColumnCorpus
 from flair.datasets import UD_ENGLISH
 from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings
 
-# 1. get the corpus
-corpus: Corpus = UD_ENGLISH().downsample(0.1)
-print(corpus)
+# define columns
+columns = {0: 'text', 1: 'tox'}
+
+# this is the folder in which train, test and dev files reside
+data_folder = ''
+
+# init a corpus using column format, data folder and the names of the train, dev and test files
+corpus: Corpus = ColumnCorpus(data_folder, columns,
+                              train_file='train',
+                              test_file='test',
+                              dev_file='dev')
+
+print(corpus.train[0].to_tagged_string('tox'))
 
 # 2. what tag do we want to predict?
-tag_type = 'pos'
+tag_type = 'tox'
 
 # 3. make the tag dictionary from the corpus
 tag_dictionary = corpus.make_tag_dictionary(tag_type=tag_type)
@@ -52,7 +63,7 @@ trainer.train('resources/taggers/example-pos',
 model = SequenceTagger.load('resources/taggers/example-pos/final-model.pt')
 
 # create example sentence
-sentence = Sentence('I love Berlin')
+sentence = Sentence('I hate all the fucking immigrants')
 
 # predict tags and print
 model.predict(sentence)
