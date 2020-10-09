@@ -95,7 +95,7 @@ def predict(model, predict_sentence):
 if __name__ == "__main__":
 	train_mode = False
 	if len(sys.argv) > 1:
-		train_mode = sys.argv[1]
+		train_mode = sys.argv[1] == "1"
 
 	predict_file = None
 	if len(sys.argv) > 2:
