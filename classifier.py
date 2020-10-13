@@ -11,9 +11,9 @@ data_folder = 'Data'
 
 # init a corpus using column format, data folder and the names of the train, dev and test files
 corpus: Corpus = ColumnCorpus(data_folder, columns,
-                              train_file='converted_data.conll',
-                              test_file='converted_data.conll',
-                              dev_file='converted_data.conll')
+                              train_file='converted_data_train.conll',
+                              test_file='converted_data_test.conll',
+                              dev_file='converted_data_dev.conll')
 
 print(corpus.train[0].to_tagged_string('tox'))
 
