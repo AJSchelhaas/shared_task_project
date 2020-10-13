@@ -57,7 +57,8 @@ def train_model(directory='Data', use_BERT=True):
 
     # embeddings
     if use_BERT:
-        embeddings = TransformerWordEmbeddings('bert-base-uncased', fine_tune=True)
+        bert_embeddings = [TransformerWordEmbeddings('bert-base-uncased', fine_tune=True)]
+        embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=bert_embeddings)
     else:
         embedding_types = [WordEmbeddings('glove')]
         embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
