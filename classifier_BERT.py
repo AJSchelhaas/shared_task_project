@@ -57,7 +57,7 @@ def train_model(directory='Data', use_BERT=True):
 
     # embeddings
     if use_BERT:
-        bert_embeddings = [TransformerWordEmbeddings('bert-base-uncased', fine_tune=True)]
+        bert_embeddings = [TransformerWordEmbeddings('bert-large-uncased', fine_tune=True)]
         embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=bert_embeddings)
     else:
         embedding_types = [WordEmbeddings('glove')]
@@ -77,7 +77,7 @@ def train_model(directory='Data', use_BERT=True):
     trainer.train('resources/taggers/toxic_classifier_bert',
                     learning_rate=0.1,
                     mini_batch_size=32,
-                    max_epochs=1)
+                    max_epochs=5)
 
 
 def predict(model, predict_sentence):
