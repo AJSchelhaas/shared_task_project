@@ -106,7 +106,7 @@ def write_results(results, filename):
 
 
 if __name__ == "__main__":
-    train_mode = False
+    train_mode = True
     if len(sys.argv) > 1:
         train_mode = sys.argv[1] == "1"
 

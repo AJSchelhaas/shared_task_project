@@ -1,0 +1,81 @@
+Collecting flair
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/cd/19/902d1691c1963ab8c9a9578abc2d65c63aa1ecf4f8200143b5ef91ace6f5/flair-0.6.1-py3-none-any.whl
+Collecting transformers>=3.0.0 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/2c/4e/4f1ede0fd7a36278844a277f8d53c21f88f37f3754abf76a5d6224f76d4a/transformers-3.4.0-py3-none-any.whl
+Collecting pytest>=5.3.2 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/b1/ee/53945d50284906adb1e613fabf2e1b8b25926e8676854bb25b93564c0ce7/pytest-6.1.2-py3-none-any.whl
+Collecting segtok>=1.5.7 (from flair)
+  Cache entry deserialization failed, entry ignored
+Collecting mpld3==0.3 (from flair)
+  Cache entry deserialization failed, entry ignored
+Collecting sqlitedict>=1.6.0 (from flair)
+  Cache entry deserialization failed, entry ignored
+Collecting gdown (from flair)
+  Cache entry deserialization failed, entry ignored
+Collecting tqdm>=4.26.0 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/93/3a/96b3dc293aa72443cf9627444c3c221a7ba34bb622e4d8bf1b5d4f2d9d08/tqdm-4.51.0-py2.py3-none-any.whl
+Collecting scikit-learn>=0.21.3 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/5c/a1/273def87037a7fb010512bbc5901c31cfddfca8080bc63b42b26e3cc55b3/scikit_learn-0.23.2-cp36-cp36m-manylinux1_x86_64.whl
+Collecting konoha<5.0.0,>=4.0.0 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/ea/01/47358efec5396fc80f98273c42cbdfe7aab056252b07884ffcc0f118978f/konoha-4.6.2-py3-none-any.whl
+Collecting deprecated>=1.2.4 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/76/a1/05d7f62f956d77b23a640efc650f80ce24483aa2f85a09c03fb64f49e879/Deprecated-1.2.10-py2.py3-none-any.whl
+Collecting sentencepiece!=0.1.92 (from flair)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/72/e0/57edbab017a204e9f39448c1717292437a45b5f7cf3a9dbf4a9c026b03c5/sentencepiece-0.1.94.tar.gz
+Collecting torch>=1.1.0 (from flair)
+  Cache entry deserialization failed, entry ignored
+/var/spool/slurmd/job15121482/slurm_script: line 15:  5994 Killed                  pip install flair --user
+Traceback (most recent call last):
+  File "classifier_BERT.py", line 5, in <module>
+    from flair.data import Corpus, Sentence
+ModuleNotFoundError: No module named 'flair'
+slurmstepd: error: Detected 1 oom-kill event(s) in step 15121482.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+
+
+###############################################################################
+Peregrine Cluster
+Job 15121482 for user 's3121534'
+Finished at: Sun Nov  1 18:41:18 CET 2020
+
+Job details:
+============
+
+Job ID              : 15121482
+Name                : SharedTask
+User                : s3121534
+Partition           : gpu
+Nodes               : pg-gpu16
+Number of Nodes     : 1
+Cores               : 12
+State               : OUT_OF_MEMORY
+Submit              : 2020-11-01T17:32:42
+Start               : 2020-11-01T18:40:46
+End                 : 2020-11-01T18:41:18
+Reserved walltime   : 05:00:00
+Used walltime       : 00:00:32
+Used CPU time       : 00:00:17 (efficiency:  4.65%)
+% User (Computation): 79.63%
+% System (I/O)      : 20.37%
+Mem reserved        : 4000M/node
+Max Mem used        : 3.58G (pg-gpu16)
+Max Disk Write      : 18.10M (pg-gpu16)
+Max Disk Read       : 22.42M (pg-gpu16)
+Average GPU usage   : 14.0% (pg-gpu16)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################
