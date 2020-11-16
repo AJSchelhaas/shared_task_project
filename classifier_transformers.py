@@ -19,6 +19,8 @@ from transformers import get_linear_schedule_with_warmup
 from transformers import BertForTokenClassification, AdamW
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
+import csv
+import re
 import numpy as np
 
 
@@ -33,6 +35,17 @@ def read_data(data_file):
 			current_label_list.append(int(list(token.misc.keys())[0]))
 		sentence_list.append(current_token_list)
 		label_list.append(current_label_list)
+
+	return sentence_list, label_list
+
+
+def read_predict_file(predict_file):
+	sentence_list, label_list = [], []
+	with open(predict_file, "r", encoding='utf-8') as f:
+		data = csv.reader(f, delimiter=',', quotechar='"')
+		for row in data:
+			label_list.append(row[0])
+			sentence_list.append(row[1])
 
 	return sentence_list, label_list
 
@@ -252,16 +265,24 @@ def predict_sentence(model, tokenizer, predict_sentence):
 			new_labels.append(label_idx)
 			new_tokens.append(token)
 
+	# retrieve spans of toxic tokens
+	result_spans = set()
 	for token, label in zip(new_tokens, new_labels):
-		print("{}\t{}".format(label, token))
+		token_escape = re.escape(token)
+		p = re.compile(token_escape)
+		if label == 1:
+			for m in p.finditer(predict_sentence):
+				if m is not None:
+					for i in range(m.start(),m.end()):
+						result_spans.add(i)
 
-	return ["results"]
+	return [list(result_spans), predict_sentence]
 
 
 def write_results(results, filename):
-	with open(filename, "w") as f:
+	with open(filename, "w", encoding='utf-8') as f:
 		for result in results:
-			result_string = '"' + str(result[0]) + "," + str(result[1]) + '"'
+			result_string = '"' + str(result[0]) + '","' + str(result[1]) + '"\n'
 			f.write(result_string)
 
 
@@ -269,14 +290,14 @@ def main(train=False, predict_file=None):
 	# Parameters
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 	n_gpu = torch.cuda.device_count()
-	epochs = 3
+	epochs = 4
 	max_grad_norm = 1.0
 
 	# Tokenizer
 	tokenizer = BertTokenizer.from_pretrained('bert-large-cased', do_lower_case=False)
 
 	# Read data
-	sentence_list, label_list = read_data("Data/converted_data.conll")
+	sentence_list, label_list = read_data("Data/converted_data_train.conll")
 
 	# Process data
 	train_dataloader, valid_dataloader = process_data(sentence_list, label_list, tokenizer)
@@ -285,12 +306,16 @@ def main(train=False, predict_file=None):
 	if train:
 		model, scheduler, optimizer = create_model(len(train_dataloader))
 		train_model(model, scheduler, optimizer, train_dataloader, valid_dataloader, device, epochs, max_grad_norm)
-		torch.save(model, "torch_model")
+		torch.save(model, "toxic_classifier.model")
 	else:
-		model = torch.load("torch_model")
+		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	results = predict_sentence(model, tokenizer, "You are a fucking idiot")
+	sentence_list, label_list = read_predict_file("Data/tsd_train.csv")
+	results = []
+	for sentence in sentence_list:
+		result = predict_sentence(model, tokenizer, sentence)
+		results.append(result)
 
 	write_results(results, "results.csv")
 
@@ -298,7 +323,7 @@ def main(train=False, predict_file=None):
 if __name__ == "__main__":
 	train_mode = False
 	if len(sys.argv) > 1:
-		train_mode = sys.argv[1] == "1"
+		train_mode = sys.argv[1].lower() == "true"
 
 	predict_file = None
 	if len(sys.argv) > 2:
