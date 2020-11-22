@@ -1,44 +1,77 @@
 #!/urs/bin/python3 
 import pandas as pd
-from sklearn.metrics import f1_score
-import re
 import json
-from sklearn.preprocessing import MultiLabelBinarizer
+import re
+from statistics import mean 
 
-source_data = pd.read_csv('tsd_train.csv')
-print(source_data)
-target_data = open('results.csv','r')
-multibinarizer = MultiLabelBinarizer()
+def get_spans(gold, pred):
+	"""Extracts the spans for the gold data (SG) and the the spans predicted by the model (SA)"""
 
-target_spans = []
-for line in target_data:
-	target_span = []
-	try:
-		span = re.search('"\[(.*?)\]"', line).group(1)
-		
-		span = '['+span+']'
-		print(span)
-		target_spans.append(span)
-	except:
-		pass
+	# Get spans for gold data
+	gold_data = pd.read_csv(gold).spans
+	SG = []
+	for span in gold_data:
+		span = json.loads(span)
+		SG.append(span)
+	
+	# Get predicted spans
+	with open(pred,'r') as pred_data:
+		lines = pred_data.readlines()
+		SA = []
+		for line in lines:
+			try:
+				span = re.search('"\[(.*?)\]"', line).group(1)
+				span = '['+span+']'
+				span = json.loads(span)
+				SA.append(span)
+			except:
+				pass
 
-	#target_spans.append(target_span)
-print(len(target_spans))
+	return SG, SA
 
-#print(len(target_spans))
-#print(len(source_data['spans']))
-#for y_true, y_pred in zip(source_data['spans'], target_data['spans']):
-for y_true, y_pred in zip(source_data['spans'], target_spans):
-	y_true = json.loads(y_true)
-	y_true = multi.fit(y_true).transform(A)
+def calculate_F1(SG, SA):
+	"""Calculates the F1-score per instance t and from this determines an average F1-score for the performance of the model"""
 
-	y_pred = json.loads(y_pred)
-	pred = multi.fit(y_true).transform(A)
-	f1 = f1_score(y_true, y_pred)
-	print(f1)
+	F1_scores = []
 
-	print('true', y_true, 'pred', y_pred)
-#	print(y_true)
-#	print(y_pred)
+	for i in range(len(SG)):
 
-	#f1 = f1_score(y)	 
+		StG = SG[i]
+		StA = SA[i]
+
+		# F1-score of 1 if both spans are empty (AND)
+		if StG == [] and StA == []: 
+			F1_scores.append(1)
+		# F1-score of 0 if only one of the spans is empty (XOR)
+		elif StG == [] or StA == [] and StG != StA: 
+			F1_scores.append(0)
+		# Calculate F1-score if neither of the spans is empty (NOR)
+		else:
+			intersection = list(set(StA) & set(StG))
+
+			# Calculate precision (P) and recall (R)
+			P = len(intersection)/len(StA)
+			R = len(intersection)/len(StG)
+
+			# Catches ZeroDivisionError when P and R are 0
+			try:
+				F1 = (2*(P*R))/(P+R)
+				F1_scores.append(F1)
+			except:
+				F1_scores.append(0)
+
+	F1_score = mean(F1_scores)
+
+	return F1_score
+
+
+def main():
+
+	SG, SA = get_spans("tsd_train.csv", "results.csv")
+
+	F1_score = calculate_F1(SG, SA)
+	print("System performance (avg. F1): {}".format(round(F1_score, 3)))
+
+
+if __name__ == '__main__':
+	main()
