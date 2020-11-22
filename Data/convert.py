@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 
 def read_corpus():
-	outfile = open('converted_data.conll', 'w')
+	outfile = open('converted_data2.conll', 'w')
 	with open('tsd_train.csv') as data:
 		file = csv.reader(data)
 		next(file, None)

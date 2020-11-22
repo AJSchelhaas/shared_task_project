@@ -6,6 +6,7 @@ import json
 from sklearn.preprocessing import MultiLabelBinarizer
 
 source_data = pd.read_csv('tsd_train.csv')
+print(source_data)
 target_data = open('results.csv','r')
 multibinarizer = MultiLabelBinarizer()
 
