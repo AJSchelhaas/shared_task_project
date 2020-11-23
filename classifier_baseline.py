@@ -34,7 +34,7 @@ def main(train=False, predict_file=None):
     for result in results:
         print(result)
 
-    write_results(results, "results.csv")
+    write_results(results, "results_baseline.csv")
 
 
 def train_model(directory='Data'):

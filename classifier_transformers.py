@@ -273,7 +273,7 @@ def predict_sentence(model, tokenizer, predict_sentence):
 		if label == 1:
 			for m in p.finditer(predict_sentence):
 				if m is not None:
-					for i in range(m.start(),m.end()):
+					for i in range(m.start(), m.end()):
 						result_spans.add(i)
 
 	return [list(result_spans), predict_sentence]
