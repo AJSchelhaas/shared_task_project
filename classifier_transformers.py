@@ -309,7 +309,7 @@ def main(train=False, predict_file=None):
 		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	sentence_list, label_list = read_predict_file("Data/tsd_train.csv")
+	sentence_list, label_list = read_predict_file("Data/tsd_trial.csv")
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)

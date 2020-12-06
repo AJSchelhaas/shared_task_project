@@ -15,10 +15,10 @@ def get_spans(gold, pred):
 		SG.append(span)
 	
 	# Get predicted spans
-	with open(pred,'r') as pred_data:
+	with open(pred,'r',encoding='utf-8') as pred_data:
 		lines = pred_data.readlines()
 		SA = []
-		for line in lines:
+		for line in lines[1:]:
 			try:
 				span = re.search('"\[(.*?)\]"', line).group(1)
 				span = '['+span+']'
@@ -38,6 +38,10 @@ def calculate_F1(SG, SA):
 
 		StG = SG[i]
 		StA = SA[i]
+
+		print("---")
+		print(StG)
+		print(StA)
 
 		# F1-score of 1 if both spans are empty (AND)
 		if StG == [] and StA == []: 
@@ -67,7 +71,7 @@ def calculate_F1(SG, SA):
 
 def main():
 
-	SG, SA = get_spans("tsd_train.csv", "results.csv")
+	SG, SA = get_spans("tsd_trial.csv", "results.csv")
 
 	F1_score = calculate_F1(SG, SA)
 	print("System performance (avg. F1): {}".format(round(F1_score, 3)))
