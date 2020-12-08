@@ -108,7 +108,7 @@ def process_data(sentence_list, label_list, tokenizer):
 	return train_dataloader, valid_dataloader
 
 
-def create_model(size_train_dataloader):
+def create_model(size_train_dataloader, epochs):
 	model = BertForTokenClassification.from_pretrained(
 		"bert-base-cased",
 		num_labels=3,
@@ -133,8 +133,6 @@ def create_model(size_train_dataloader):
 		optimizer_grouped_parameters = [{"params": [p for n, p in param_optimizer]}]
 
 	optimizer = AdamW(optimizer_grouped_parameters, lr=3e-5, eps=1e-8)
-
-	epochs = 3
 	max_grad_norm = 1.0
 
 	# Total number of training steps is number of batches * number of epochs.
@@ -304,14 +302,14 @@ def main(train=False, predict_file=None):
 
 	# Train if required
 	if train:
-		model, scheduler, optimizer = create_model(len(train_dataloader))
+		model, scheduler, optimizer = create_model(len(train_dataloader), epochs)
 		train_model(model, scheduler, optimizer, train_dataloader, valid_dataloader, device, epochs, max_grad_norm)
 		torch.save(model, "toxic_classifier.model")
 	else:
 		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	sentence_list, label_list = read_predict_file("Data/tsd_train.csv")
+	sentence_list, label_list = read_predict_file("Data/tsd_trial.csv")
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)
