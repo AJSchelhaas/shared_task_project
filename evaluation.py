@@ -67,7 +67,7 @@ def calculate_F1(SG, SA):
 
 def main():
 
-	SG, SA = get_spans("tsd_train.csv", "results.csv")
+	SG, SA = get_spans("tsd_trial.csv", "results_baseline.csv")
 
 	F1_score = calculate_F1(SG, SA)
 	print("System performance (avg. F1): {}".format(round(F1_score, 3)))
