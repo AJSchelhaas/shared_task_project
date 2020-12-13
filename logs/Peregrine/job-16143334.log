@@ -1,0 +1,105 @@
+Collecting transformers
+  Downloading https://files.pythonhosted.org/packages/ed/db/98c3ea1a78190dac41c0127a063abf92bd01b4b0b6970a6db1c2f5b66fa0/transformers-4.0.1-py3-none-any.whl (1.4MB)
+Requirement already satisfied: numpy in /apps/skylake/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from transformers) (1.17.3)
+Collecting tqdm>=4.27 (from transformers)
+  Using cached https://files.pythonhosted.org/packages/8a/54/115f0c28a61d56674c3a5e05c46d6c3523ad196e1dcd3e2d8b119026df36/tqdm-4.54.1-py2.py3-none-any.whl
+Collecting filelock (from transformers)
+  Downloading https://files.pythonhosted.org/packages/93/83/71a2ee6158bb9f39a90c0dea1637f81d5eef866e188e1971a1b1ab01a35a/filelock-3.0.12-py3-none-any.whl
+Collecting sacremoses (from transformers)
+  Using cached https://files.pythonhosted.org/packages/7d/34/09d19aff26edcc8eb2a01bed8e98f13a1537005d31e95233fd48216eed10/sacremoses-0.0.43.tar.gz
+Requirement already satisfied: packaging in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from transformers) (19.1)
+Requirement already satisfied: requests in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from transformers) (2.22.0)
+Collecting regex!=2019.12.17 (from transformers)
+  Downloading https://files.pythonhosted.org/packages/20/28/ff0d0936a31f15a0879caf6dac1f1cbaab1fc7b9e8baf8a1d5a70380fb22/regex-2020.11.13-cp37-cp37m-manylinux2010_x86_64.whl (667kB)
+Collecting tokenizers==0.9.4 (from transformers)
+  Downloading https://files.pythonhosted.org/packages/fb/36/59e4a62254c5fcb43894c6b0e9403ec6f4238cc2422a003ed2e6279a1784/tokenizers-0.9.4-cp37-cp37m-manylinux2010_x86_64.whl (2.9MB)
+Requirement already satisfied: six in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from sacremoses->transformers) (1.12.0)
+Requirement already satisfied: click in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from sacremoses->transformers) (7.0)
+Requirement already satisfied: joblib in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from sacremoses->transformers) (0.13.2)
+Requirement already satisfied: attrs in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from packaging->transformers) (19.1.0)
+Requirement already satisfied: pyparsing>=2.0.2 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from packaging->transformers) (2.4.2)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests->transformers) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests->transformers) (1.25.3)
+Requirement already satisfied: idna<2.9,>=2.5 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests->transformers) (2.8)
+Requirement already satisfied: certifi>=2017.4.17 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests->transformers) (2019.9.11)
+Building wheels for collected packages: sacremoses
+  Building wheel for sacremoses (setup.py): started
+  Building wheel for sacremoses (setup.py): finished with status 'done'
+  Created wheel for sacremoses: filename=sacremoses-0.0.43-cp37-none-any.whl size=893261 sha256=4b5b307b83fa141aba24716412dd71a679b76735d49ca09deed294e42e07b479
+  Stored in directory: /home/s2964007/.cache/pip/wheels/29/3c/fd/7ce5c3f0666dab31a50123635e6fb5e19ceb42ce38d4e58f45
+Successfully built sacremoses
+Installing collected packages: tqdm, filelock, regex, sacremoses, tokenizers, transformers
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Toegang geweigerd: '/software/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages/tqdm'
+Consider using the `--user` option or check the permissions.
+
+Collecting datasets
+  Using cached https://files.pythonhosted.org/packages/1a/38/0c24dce24767386123d528d27109024220db0e7a04467b658d587695241a/datasets-1.1.3-py3-none-any.whl
+Collecting pyarrow>=0.17.1 (from datasets)
+  Downloading https://files.pythonhosted.org/packages/29/bd/4b1f8eb2ebfff7992cae6526daaec9018a8c34a738fa7df12b9d1cdfec43/pyarrow-2.0.0-cp37-cp37m-manylinux2010_x86_64.whl (17.9MB)
+Collecting multiprocess (from datasets)
+  Downloading https://files.pythonhosted.org/packages/db/20/458ac043a57322365ac2ed86a911bf7598fc2e49bccb3f94ea810fbb6b9b/multiprocess-0.70.11.1-py37-none-any.whl (108kB)
+Requirement already satisfied: numpy>=1.17 in /apps/skylake/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from datasets) (1.17.3)
+Collecting tqdm<4.50.0,>=4.27 (from datasets)
+  Using cached https://files.pythonhosted.org/packages/73/d5/f220e0c69b2f346b5649b66abebb391df1a00a59997a7ccf823325bd7a3e/tqdm-4.49.0-py2.py3-none-any.whl
+Collecting dill (from datasets)
+  Using cached https://files.pythonhosted.org/packages/52/d6/79f40d230895fa1ce3b6af0d22e0ac79c65175dc069c194b79cc8e05a033/dill-0.3.3-py2.py3-none-any.whl
+Requirement already satisfied: requests>=2.19.0 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from datasets) (2.22.0)
+Requirement already satisfied: pandas in /apps/skylake/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages (from datasets) (0.25.3)
+Collecting xxhash (from datasets)
+  Downloading https://files.pythonhosted.org/packages/e7/27/1c0b37c53a7852f1c190ba5039404d27b3ae96a55f48203a74259f8213c9/xxhash-2.0.0-cp37-cp37m-manylinux2010_x86_64.whl (243kB)
+Requirement already satisfied: certifi>=2017.4.17 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests>=2.19.0->datasets) (2019.9.11)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests>=2.19.0->datasets) (1.25.3)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests>=2.19.0->datasets) (3.0.4)
+Requirement already satisfied: idna<2.9,>=2.5 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from requests>=2.19.0->datasets) (2.8)
+Requirement already satisfied: python-dateutil>=2.6.1 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from pandas->datasets) (2.8.0)
+Requirement already satisfied: pytz>=2017.2 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from pandas->datasets) (2019.2)
+Requirement already satisfied: six>=1.5 in /apps/skylake/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages (from python-dateutil>=2.6.1->pandas->datasets) (1.12.0)
+Installing collected packages: pyarrow, dill, multiprocess, tqdm, xxhash, datasets
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Toegang geweigerd: '/software/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/site-packages/pyarrow-2.0.0.dist-info'
+Consider using the `--user` option or check the permissions.
+
+Traceback (most recent call last):
+  File "run_mlm.py", line 30, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+
+
+###############################################################################
+Peregrine Cluster
+Job 16143334 for user 's2964007'
+Finished at: Sun Dec 13 19:00:25 CET 2020
+
+Job details:
+============
+
+Job ID              : 16143334
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu10
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-13T18:59:52
+Start               : 2020-12-13T19:00:03
+End                 : 2020-12-13T19:00:24
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:21
+Used CPU time       : 00:00:07 (efficiency:  2.97%)
+% User (Computation): 81.68%
+% System (I/O)      : 18.31%
+Mem reserved        : 4000M/node
+Max Mem used        : 0.00  (pg-gpu10)
+Max Disk Write      : 0.00  (pg-gpu10)
+Max Disk Read       : 0.00  (pg-gpu10)
+Average GPU usage   : No GPU metrics available (pg-gpu10)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################

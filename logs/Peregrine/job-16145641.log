@@ -1,0 +1,66 @@
+2020-12-13 20:55:17.061631: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+[[5450,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: pg-gpu23
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "run_mlm.py", line 392, in <module>
+    main()
+  File "run_mlm.py", line 155, in main
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+  File "/home/s2964007/.local/lib/python3.7/site-packages/transformers/hf_argparser.py", line 135, in parse_args_into_dataclasses
+    obj = dtype(**inputs)
+  File "<string>", line 12, in __init__
+  File "run_mlm.py", line 138, in __post_init__
+    assert extension in ["csv", "json", "txt"], "`train_file` should be a csv, a json or a txt file."
+AssertionError: `train_file` should be a csv, a json or a txt file.
+
+
+###############################################################################
+Peregrine Cluster
+Job 16145641 for user 's2964007'
+Finished at: Sun Dec 13 20:55:40 CET 2020
+
+Job details:
+============
+
+Job ID              : 16145641
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu23
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-13T19:57:28
+Start               : 2020-12-13T20:55:04
+End                 : 2020-12-13T20:55:39
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:35
+Used CPU time       : 00:00:05 (efficiency:  1.40%)
+% User (Computation): 77.78%
+% System (I/O)      : 22.20%
+Mem reserved        : 4000M/node
+Max Mem used        : 232.28M (pg-gpu23)
+Max Disk Write      : 0.00  (pg-gpu23)
+Max Disk Read       : 40.96K (pg-gpu23)
+Average GPU usage   : No GPU metrics available (pg-gpu23)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################

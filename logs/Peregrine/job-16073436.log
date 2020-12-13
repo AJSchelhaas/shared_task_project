@@ -1,0 +1,86 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting pip
+  Using cached pip-20.3.1-py2.py3-none-any.whl (1.5 MB)
+Installing collected packages: pip
+Successfully installed pip-20.3.1
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: transformers in /home/s2964007/.local/lib/python3.8/site-packages (4.0.0)
+Requirement already satisfied: filelock in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from transformers) (3.0.12)
+Requirement already satisfied: tqdm>=4.27 in /home/s2964007/.local/lib/python3.8/site-packages (from transformers) (4.49.0)
+Requirement already satisfied: requests in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from transformers) (2.23.0)
+Requirement already satisfied: numpy in /home/s2964007/.local/lib/python3.8/site-packages (from transformers) (1.19.4)
+Requirement already satisfied: regex!=2019.12.17 in /home/s2964007/.local/lib/python3.8/site-packages (from transformers) (2020.11.13)
+Requirement already satisfied: packaging in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from transformers) (20.3)
+Requirement already satisfied: tokenizers==0.9.4 in /home/s2964007/.local/lib/python3.8/site-packages (from transformers) (0.9.4)
+Requirement already satisfied: sacremoses in /home/s2964007/.local/lib/python3.8/site-packages (from transformers) (0.0.43)
+Requirement already satisfied: certifi>=2017.4.17 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests->transformers) (2020.4.5.1)
+Requirement already satisfied: idna<3,>=2.5 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests->transformers) (2.9)
+Requirement already satisfied: chardet<4,>=3.0.2 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests->transformers) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests->transformers) (1.25.9)
+Requirement already satisfied: pyparsing>=2.0.2 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from packaging->transformers) (2.4.7)
+Requirement already satisfied: six in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from packaging->transformers) (1.14.0)
+Requirement already satisfied: click in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from sacremoses->transformers) (7.1.1)
+Requirement already satisfied: joblib in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from sacremoses->transformers) (0.14.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: datasets in /home/s2964007/.local/lib/python3.8/site-packages (1.1.3)
+Requirement already satisfied: pandas in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (1.1.5)
+Requirement already satisfied: xxhash in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (2.0.0)
+Requirement already satisfied: pyarrow>=0.17.1 in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (2.0.0)
+Requirement already satisfied: multiprocess in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (0.70.11.1)
+Requirement already satisfied: tqdm<4.50.0,>=4.27 in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (4.49.0)
+Requirement already satisfied: dill in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (0.3.3)
+Requirement already satisfied: numpy>=1.17 in /home/s2964007/.local/lib/python3.8/site-packages (from datasets) (1.19.4)
+Requirement already satisfied: requests>=2.19.0 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from datasets) (2.23.0)
+Requirement already satisfied: pytz>=2017.2 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from pandas->datasets) (2019.3)
+Requirement already satisfied: python-dateutil>=2.7.3 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from pandas->datasets) (2.8.1)
+Requirement already satisfied: chardet<4,>=3.0.2 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests>=2.19.0->datasets) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests>=2.19.0->datasets) (2020.4.5.1)
+Requirement already satisfied: idna<3,>=2.5 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests>=2.19.0->datasets) (2.9)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from requests>=2.19.0->datasets) (1.25.9)
+Requirement already satisfied: six>=1.5 in /apps/skylake/software/Python/3.8.2-GCCcore-9.3.0/lib/python3.8/site-packages (from python-dateutil>=2.7.3->pandas->datasets) (1.14.0)
+Neither PyTorch nor TensorFlow >= 2.0 have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Traceback (most recent call last):
+  File "run_mlm.py", line 49, in <module>
+    MODEL_CONFIG_CLASSES = list(MODEL_FOR_MASKED_LM_MAPPING.keys())
+AttributeError: 'NoneType' object has no attribute 'keys'
+
+
+###############################################################################
+Peregrine Cluster
+Job 16073436 for user 's2964007'
+Finished at: Thu Dec 10 12:01:33 CET 2020
+
+Job details:
+============
+
+Job ID              : 16073436
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu11
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-10T11:11:49
+Start               : 2020-12-10T12:00:30
+End                 : 2020-12-10T12:01:32
+Reserved walltime   : 01:00:00
+Used walltime       : 00:01:02
+Used CPU time       : 00:00:09 (efficiency:  1.28%)
+% User (Computation): 63.51%
+% System (I/O)      : 36.48%
+Mem reserved        : 4000M/node
+Max Mem used        : 60.22M (pg-gpu11)
+Max Disk Write      : 29.36M (pg-gpu11)
+Max Disk Read       : 39.03M (pg-gpu11)
+Average GPU usage   : No GPU metrics available (pg-gpu11)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################

@@ -1,0 +1,74 @@
+2020-12-13 21:01:24.902596: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+[[18659,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: pg-gpu23
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+12/13/2020 21:01:31 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+12/13/2020 21:01:31 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='tmp/mlm_SemEval', overwrite_output_dir=False, do_train=True, do_eval=True, do_predict=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec13_21-01-31_pg-gpu23', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='tmp/mlm_SemEval', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None)
+Using custom data configuration default
+0 tables [00:00, ? tables/s]1 tables [00:00,  3.63 tables/s]                                0 tables [00:00, ? tables/s]                            Downloading and preparing dataset text/default-757f7c67e929303f (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /home/s2964007/.cache/huggingface/datasets/text/default-757f7c67e929303f/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab...
+Dataset text downloaded and prepared to /home/s2964007/.cache/huggingface/datasets/text/default-757f7c67e929303f/0.0.0/daf90a707a433ac193b369c8cc1772139bb6cca21a9c7fe83bdd16aad9b9b6ab. Subsequent calls will reuse this data.
+Traceback (most recent call last):
+  File "run_mlm.py", line 392, in <module>
+    main()
+  File "run_mlm.py", line 223, in main
+    config = AutoConfig.from_pretrained(model_args.model_name_or_path, cache_dir=model_args.cache_dir)
+  File "/home/s2964007/.local/lib/python3.7/site-packages/transformers/models/auto/configuration_auto.py", line 341, in from_pretrained
+    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/s2964007/.local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 389, in get_config_dict
+    config_dict = cls._dict_from_json_file(resolved_config_file)
+  File "/home/s2964007/.local/lib/python3.7/site-packages/transformers/configuration_utils.py", line 472, in _dict_from_json_file
+    text = reader.read()
+  File "/software/software/Python/3.7.4-GCCcore-8.3.0/lib/python3.7/codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 64: invalid start byte
+
+
+###############################################################################
+Peregrine Cluster
+Job 16146233 for user 's2964007'
+Finished at: Sun Dec 13 21:01:44 CET 2020
+
+Job details:
+============
+
+Job ID              : 16146233
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu23
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-13T21:01:19
+Start               : 2020-12-13T21:01:19
+End                 : 2020-12-13T21:01:44
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:25
+Used CPU time       : 00:00:06 (efficiency:  2.00%)
+% User (Computation): 75.38%
+% System (I/O)      : 24.60%
+Mem reserved        : 4000M/node
+Max Mem used        : 0.00  (pg-gpu23)
+Max Disk Write      : 0.00  (pg-gpu23)
+Max Disk Read       : 0.00  (pg-gpu23)
+Average GPU usage   : No GPU metrics available (pg-gpu23)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################
