@@ -17,8 +17,8 @@ pip install datasets
 
 python run_mlm.py \
     --model_name_or_path ../model/toxic_classifier.model \
-    --train_file ../Data/converted_data_train.conll \
-    --validation_file ..Data/converted_data_dev.conll \
+    --train_file /SemEval\ data/finetuning_train.txt \
+    --validation_file /SemEval\ data/finetuning_trial.txt \
     --do_train \
     --do_eval \
-    --output_dir /tmp/mlm
+    --output_dir /tmp/mlm_SemEval
