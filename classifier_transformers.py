@@ -39,13 +39,13 @@ def read_data(data_file):
 	return sentence_list, label_list
 
 
-def read_predict_file(predict_file):
+def read_predict_file(predict_file, sentence_row=1):
 	sentence_list, label_list = [], []
 	with open(predict_file, "r", encoding='utf-8') as f:
 		data = csv.reader(f, delimiter=',', quotechar='"')
 		for row in data:
 			label_list.append(row[0])
-			sentence_list.append(row[1])
+			sentence_list.append(row[sentence_row])
 
 	return sentence_list, label_list
 
@@ -309,7 +309,7 @@ def main(train=False, predict_file=None):
 		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	sentence_list, label_list = read_predict_file("Data/tsd_trial.csv")
+	sentence_list, label_list = read_predict_file("Data/labeled_data.csv", 6)
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)
