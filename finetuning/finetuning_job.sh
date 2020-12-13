@@ -10,7 +10,7 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 
 module load Python
-source VirtualEnv/bin/activate
+#source VirtualEnv/bin/activate
 pip install --upgrade pip
 pip install transformers
 pip install datasets
