@@ -7,12 +7,13 @@ import spacy
 
 def read_corpus():
 	nlp = spacy.load("en_core_web_sm")
-	outfile = open('converted_data_annot.conll', 'w')
-	with open('tsd_train.csv') as data:
+	outfile = open('Silver/conv_sdata_annot.conll', 'w')
+	with open('Silver/silver_data_1.csv') as data:
 		file = csv.reader(data)
 		next(file, None)
 		sent_id = 1
 		for row in file:
+			print(sent_id)
 			text = row[1].replace('\n',' ')
 			span_string = row[0].strip('][').split(', ')
 			if span_string == ['']:
@@ -68,7 +69,7 @@ def read_corpus():
 			#		label = 0
 			#		# outfile.write(str(i+1)+'\t'+pos_token[0]+'\t'+'_'+'\t'+pos_token[1]+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'_'+'\t'+'tox=0'+'\n')
 			#	outfile.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(str(i+1), pos_token[0],u,pos_token[1],u,u,u,u,u,label))
-
+			sent_id += 1
 			outfile.write('\n')
 
 def main():
