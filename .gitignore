@@ -1,1 +1,4 @@
 /resources
+/model/*
+/finetuning/tmp/*
+

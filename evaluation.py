@@ -70,7 +70,6 @@ def calculate_F1(SG, SA):
 
 
 def main():
-
 	SG, SA = get_spans("tsd_trial.csv", "results.csv")
 
 	F1_score = calculate_F1(SG, SA)
