@@ -9,16 +9,15 @@
 #SBATCH --mail-user=jmvdheide96@gmail.com
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-module load Python
 #source VirtualEnv/bin/activate
-pip install --upgrade pip
-pip install transformers
-pip install datasets
+#pip install --upgrade pip
+#pip install transformers
+#pip install datasets
 
 python run_mlm.py \
     --model_name_or_path ../model/toxic_classifier.model \
-    --train_file /SemEval\ data/finetuning_train.txt \
-    --validation_file /SemEval\ data/finetuning_trial.txt \
+    --train_file SemEval\ data/finetuning_train.txt \
+    --validation_file SemEval\ data/finetuning_trial.txt \
     --do_train \
     --do_eval \
-    --output_dir /tmp/mlm_SemEval
+    --output_dir tmp/mlm_SemEval
