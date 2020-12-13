@@ -1,0 +1,45 @@
+  File "run_mlm.py", line 59
+    model_name_or_path: Optional[str] = field(
+                      ^
+SyntaxError: invalid syntax
+
+
+###############################################################################
+Peregrine Cluster
+Job 16146654 for user 's2964007'
+Finished at: Sun Dec 13 21:46:24 CET 2020
+
+Job details:
+============
+
+Job ID              : 16146654
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu13
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-13T21:30:27
+Start               : 2020-12-13T21:46:23
+End                 : 2020-12-13T21:46:23
+Reserved walltime   : 01:00:00
+Used walltime       : --
+Used CPU time       : --
+% User (Computation): 60.00%
+% System (I/O)      : 40.00%
+Mem reserved        : 4000M/node
+Max Mem used        : 0.00  (pg-gpu13)
+Max Disk Write      : 0.00  (pg-gpu13)
+Max Disk Read       : 0.00  (pg-gpu13)
+Average GPU usage   : 4.0% (pg-gpu13)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################

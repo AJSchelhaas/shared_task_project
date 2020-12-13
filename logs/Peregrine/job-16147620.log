@@ -1,0 +1,42 @@
+/var/spool/slurmd/job16147620/slurm_script: regel 17: python3: opdracht niet gevonden
+
+
+###############################################################################
+Peregrine Cluster
+Job 16147620 for user 's2964007'
+Finished at: Sun Dec 13 22:57:55 CET 2020
+
+Job details:
+============
+
+Job ID              : 16147620
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpu
+Nodes               : pg-gpu13
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-13T22:35:55
+Start               : 2020-12-13T22:57:54
+End                 : 2020-12-13T22:57:55
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:01
+Used CPU time       : --
+% User (Computation): 37.50%
+% System (I/O)      : 62.50%
+Mem reserved        : 4000M/node
+Max Mem used        : 0.00  (pg-gpu13)
+Max Disk Write      : 0.00  (pg-gpu13)
+Max Disk Read       : 0.00  (pg-gpu13)
+Average GPU usage   : No GPU metrics available (pg-gpu13)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################
