@@ -6,16 +6,18 @@ import csv
 import json
 
 def main():
-	with open('tsd_train.csv') as data:
-		with open('finetuning_train.json', 'w', encoding='utf-8') as outfile:
-			json.dump(data, outfile, ensure_ascii=False)
 
-	# outfile = open('finetuning_trial.json', 'w')
-	# with open('tsd_trial.csv') as data:
-	# 	file =csv.reader(data)
-	# 	next(file, None)
-	# 	for row in file:
-	# 		outfile.write(row[1])
+# 	with open('tsd_train.csv') as data:
+# 		with open('finetuning_train.json', 'w', encoding='utf-8') as outfile:
+# 			json.dump(data, outfile, ensure_ascii=False)
+
+	with open('../finetuning/Test/finetuning_train.csv', 'w', encoding = 'utf-8') as outfile:
+		with open('Source/tsd_train.csv', encoding = 'utf-8') as data:
+			writer = csv.writer(outfile)
+			file = csv.reader(data)
+			next(file, None)
+			for row in file:
+				outfile.write(row[1])
 
 
 if __name__ == '__main__':
