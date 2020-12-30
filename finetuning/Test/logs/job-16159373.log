@@ -1,0 +1,91 @@
+2020-12-14 12:19:43.152997: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+--------------------------------------------------------------------------
+[[21495,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: pg-gpu08
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+12/14/2020 12:20:08 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+12/14/2020 12:20:08 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(output_dir='tmp/mlm_SemEval', overwrite_output_dir=False, do_train=True, do_eval=True, do_predict=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=8, per_device_eval_batch_size=8, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, warmup_steps=0, logging_dir='runs/Dec14_12-20-08_pg-gpu08', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='tmp/mlm_SemEval', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None)
+Downloading:   0%|          | 0.00/1.66k [00:00<?, ?B/s]Downloading: 5.33kB [00:00, 3.32MB/s]                   
+Using custom data configuration default
+0 tables [00:00, ? tables/s]                            Downloading and preparing dataset csv/default-d2843344c6e82420 (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /home/s2964007/.cache/huggingface/datasets/csv/default-d2843344c6e82420/0.0.0/2960f95a26e85d40ca41a230ac88787f715ee3003edaacb8b1f0891e9f04dda2...
+Traceback (most recent call last):
+  File "run_mlm.py", line 392, in <module>
+    main()
+  File "run_mlm.py", line 211, in main
+    datasets = load_dataset(extension, data_files=data_files)
+  File "/home/s2964007/.local/lib/python3.7/site-packages/datasets/load.py", line 610, in load_dataset
+    ignore_verifications=ignore_verifications,
+  File "/home/s2964007/.local/lib/python3.7/site-packages/datasets/builder.py", line 515, in download_and_prepare
+    dl_manager=dl_manager, verify_infos=verify_infos, **download_and_prepare_kwargs
+  File "/home/s2964007/.local/lib/python3.7/site-packages/datasets/builder.py", line 592, in _download_and_prepare
+    self._prepare_split(split_generator, **prepare_split_kwargs)
+  File "/home/s2964007/.local/lib/python3.7/site-packages/datasets/builder.py", line 942, in _prepare_split
+    for key, table in utils.tqdm(generator, unit=" tables", leave=False, disable=not_verbose):
+  File "/home/s2964007/.local/lib/python3.7/site-packages/tqdm/std.py", line 1133, in __iter__
+    for obj in iterable:
+  File "/home/s2964007/.cache/huggingface/modules/datasets_modules/datasets/csv/2960f95a26e85d40ca41a230ac88787f715ee3003edaacb8b1f0891e9f04dda2/csv.py", line 129, in _generate_tables
+    for batch_idx, df in enumerate(csv_file_reader):
+  File "/software/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/pandas/io/parsers.py", line 1128, in __next__
+    return self.get_chunk()
+  File "/software/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/pandas/io/parsers.py", line 1188, in get_chunk
+    return self.read(nrows=size)
+  File "/software/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/pandas/io/parsers.py", line 1154, in read
+    ret = self._engine.read(nrows)
+  File "/software/software/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/pandas/io/parsers.py", line 2059, in read
+    data = self._reader.read(nrows)
+  File "pandas/_libs/parsers.pyx", line 881, in pandas._libs.parsers.TextReader.read
+  File "pandas/_libs/parsers.pyx", line 908, in pandas._libs.parsers.TextReader._read_low_memory
+  File "pandas/_libs/parsers.pyx", line 950, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 937, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "pandas/_libs/parsers.pyx", line 2132, in pandas._libs.parsers.raise_parser_error
+pandas.errors.ParserError: Error tokenizing data. C error: Expected 7 fields in line 10, saw 13
+
+
+
+###############################################################################
+Peregrine Cluster
+Job 16159373 for user 's2964007'
+Finished at: Mon Dec 14 12:20:11 CET 2020
+
+Job details:
+============
+
+Job ID              : 16159373
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpushort
+Nodes               : pg-gpu08
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2020-12-14T12:19:29
+Start               : 2020-12-14T12:19:31
+End                 : 2020-12-14T12:20:11
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:40
+Used CPU time       : 00:00:05 (efficiency:  1.23%)
+% User (Computation): 73.03%
+% System (I/O)      : 26.95%
+Mem reserved        : 4000M/node
+Max Mem used        : 235.05M (pg-gpu08)
+Max Disk Write      : 0.00  (pg-gpu08)
+Max Disk Read       : 40.96K (pg-gpu08)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/additional_information/scientific_output
+
+################################################################################
