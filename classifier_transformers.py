@@ -295,7 +295,7 @@ def main(train=False, predict_file=None):
 	tokenizer = BertTokenizer.from_pretrained('bert-large-cased', do_lower_case=False)
 
 	# Read data
-	sentence_list, label_list = read_data("Data/converted_data_train.conll")
+	sentence_list, label_list = read_data("Data/Silver/train_data_with_silver_1.conll")
 
 	# Process data
 	train_dataloader, valid_dataloader = process_data(sentence_list, label_list, tokenizer)
@@ -309,7 +309,7 @@ def main(train=False, predict_file=None):
 		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	sentence_list, label_list = read_predict_file("Data/labeled_data.csv", 6)
+	sentence_list, label_list = read_predict_file("Data/Source/tsd_trial.csv", 1)
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)
