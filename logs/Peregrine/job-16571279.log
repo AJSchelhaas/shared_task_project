@@ -1,0 +1,119 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python/Python/3.7.4-GCCcore-8.3.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "Python/Python/3.7.4-GCCcore-8.3.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+Restoring modules from user's finetuning
+Lmod Warning: One or more modules in your finetuning collection have changed:
+"PyTorch", "X11".
+To see the contents of this collection execute:
+  $ module describe finetuning
+To rebuild the collection, do a module reset, then load the modules you wish,
+then execute:
+  $ module save finetuning
+If you no longer want this module collection execute:
+  $ rm ~/.lmod.d/finetuning
+
+For more information execute 'module help' or see http://lmod.readthedocs.org/
+No change in modules loaded.
+
+
+
+
+Requirement already up-to-date: pip==20.0.2 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (20.0.2)
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+Requirement already up-to-date: setuptools==46.1.3 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (46.1.3)
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+Requirement already satisfied: transformers in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (4.1.1)
+Requirement already satisfied: tqdm>=4.27 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (4.49.0)
+Requirement already satisfied: packaging in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (20.8)
+Requirement already satisfied: dataclasses; python_version < "3.7" in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (0.8)
+Requirement already satisfied: numpy in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (1.19.4)
+Requirement already satisfied: filelock in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (3.0.12)
+Requirement already satisfied: regex!=2019.12.17 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (2020.11.13)
+Requirement already satisfied: tokenizers==0.9.4 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (0.9.4)
+Requirement already satisfied: requests in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (2.25.1)
+Requirement already satisfied: sacremoses in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from transformers) (0.0.43)
+Requirement already satisfied: pyparsing>=2.0.2 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from packaging->transformers) (2.4.7)
+Requirement already satisfied: chardet<5,>=3.0.2 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests->transformers) (4.0.0)
+Requirement already satisfied: certifi>=2017.4.17 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests->transformers) (2020.12.5)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests->transformers) (1.26.2)
+Requirement already satisfied: idna<3,>=2.5 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests->transformers) (2.10)
+Requirement already satisfied: six in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from sacremoses->transformers) (1.15.0)
+Requirement already satisfied: click in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from sacremoses->transformers) (7.1.2)
+Requirement already satisfied: joblib in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from sacremoses->transformers) (1.0.0)
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+Requirement already satisfied: datasets in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (1.1.3)
+Requirement already satisfied: tqdm<4.50.0,>=4.27 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (4.49.0)
+Requirement already satisfied: xxhash in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (2.0.0)
+Requirement already satisfied: dataclasses; python_version < "3.7" in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (0.8)
+Requirement already satisfied: pyarrow>=0.17.1 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (2.0.0)
+Requirement already satisfied: dill in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (0.3.3)
+Requirement already satisfied: requests>=2.19.0 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (2.25.1)
+Requirement already satisfied: pandas in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (1.1.5)
+Requirement already satisfied: numpy>=1.17 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (1.19.4)
+Requirement already satisfied: multiprocess in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from datasets) (0.70.11.1)
+Requirement already satisfied: idna<3,>=2.5 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests>=2.19.0->datasets) (2.10)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests>=2.19.0->datasets) (1.26.2)
+Requirement already satisfied: chardet<5,>=3.0.2 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests>=2.19.0->datasets) (4.0.0)
+Requirement already satisfied: certifi>=2017.4.17 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from requests>=2.19.0->datasets) (2020.12.5)
+Requirement already satisfied: pytz>=2017.2 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from pandas->datasets) (2020.5)
+Requirement already satisfied: python-dateutil>=2.7.3 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from pandas->datasets) (2.8.1)
+Requirement already satisfied: six>=1.5 in /data/s2964007/python_envs/python_envs/lib/python3.6/site-packages (from python-dateutil>=2.7.3->pandas->datasets) (1.15.0)
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Traceback (most recent call last):
+  File "run_mlm.py", line 49, in <module>
+    MODEL_CONFIG_CLASSES = list(MODEL_FOR_MASKED_LM_MAPPING.keys())
+AttributeError: 'NoneType' object has no attribute 'keys'
+
+
+###############################################################################
+Peregrine Cluster
+Job 16571279 for user 's2964007'
+Finished at: Mon Jan  4 12:30:02 CET 2021
+
+Job details:
+============
+
+Job ID              : 16571279
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpushort
+Nodes               : pg-gpu31
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2021-01-04T12:29:07
+Start               : 2021-01-04T12:29:08
+End                 : 2021-01-04T12:30:01
+Reserved walltime   : 01:00:00
+Used walltime       : 00:00:53
+Used CPU time       : 00:00:11 (efficiency:  1.84%)
+% User (Computation): 71.08%
+% System (I/O)      : 28.92%
+Mem reserved        : 4000M/node
+Max Mem used        : 26.05M (pg-gpu31)
+Max Disk Write      : 3.30M (pg-gpu31)
+Max Disk Read       : 91.09M (pg-gpu31)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################

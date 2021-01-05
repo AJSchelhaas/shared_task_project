@@ -14,6 +14,7 @@
 
 module load Python/Python/3.7.4-GCCcore-8.3.0
 
+module restore finetuning
 
 
 # Set data location
@@ -51,6 +52,7 @@ pip install --upgrade setuptools==46.1.3
 # Install required packages (inside virtual environment)
 
 pip install transformers
+pip install datasets
 
 python run_mlm.py \
     --model_name_or_path ../model/toxic_classifier.model \
