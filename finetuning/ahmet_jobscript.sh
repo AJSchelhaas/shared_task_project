@@ -15,30 +15,28 @@
 module load Python/Python/3.7.4-GCCcore-8.3.0
 module restore finetuning
 
-module restore finetuning
-
 
 # Set data location
 
-DATADIR='/data/'"${USER}"'/python_envs'
+# DATADIR='/data/'"${USER}"'/python_envs'
 
 
 
-# Prepare /data directories, ignore warning in case it already exists
+# # Prepare /data directories, ignore warning in case it already exists
 
-mkdir -p "${DATADIR}"
+# mkdir -p "${DATADIR}"
 
 
 
-# Create virtual environment
+# # Create virtual environment
 
-python3 -m venv "${DATADIR}"/python_envs
+# python3 -m venv "${DATADIR}"/python_envs
 
 
 
 # Activate virtual environment
 
-source "${DATADIR}"/python_envs/bin/activate
+source VirtualEnv/bin/activate
 
 
 
