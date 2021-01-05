@@ -1,0 +1,118 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python/Python/3.7.4-GCCcore-8.3.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "Python/Python/3.7.4-GCCcore-8.3.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+Collecting pip==20.0.2
+  Cache entry deserialization failed, entry ignored
+  Downloading https://files.pythonhosted.org/packages/54/0c/d01aa759fdc501a58f431eb594a17495f15b88da142ce14b5845662c13f3/pip-20.0.2-py2.py3-none-any.whl (1.4MB)
+Installing collected packages: pip
+  Found existing installation: pip 9.0.3
+    Uninstalling pip-9.0.3:
+      Successfully uninstalled pip-9.0.3
+Successfully installed pip-20.0.2
+You are using pip version 20.0.2, however version 20.3.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Collecting setuptools==46.1.3
+  Downloading setuptools-46.1.3-py3-none-any.whl (582 kB)
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 39.2.0
+    Uninstalling setuptools-39.2.0:
+      Successfully uninstalled setuptools-39.2.0
+Successfully installed setuptools-46.1.3
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+Collecting transformers
+  Downloading transformers-4.1.1-py3-none-any.whl (1.5 MB)
+Collecting regex!=2019.12.17
+  Downloading regex-2020.11.13-cp36-cp36m-manylinux2014_x86_64.whl (723 kB)
+Collecting tqdm>=4.27
+  Downloading tqdm-4.55.1-py2.py3-none-any.whl (68 kB)
+Collecting tokenizers==0.9.4
+  Downloading tokenizers-0.9.4-cp36-cp36m-manylinux2010_x86_64.whl (2.9 MB)
+Collecting requests
+  Downloading requests-2.25.1-py2.py3-none-any.whl (61 kB)
+Collecting numpy
+  Downloading numpy-1.19.4-cp36-cp36m-manylinux2010_x86_64.whl (14.5 MB)
+Collecting dataclasses; python_version < "3.7"
+  Downloading dataclasses-0.8-py3-none-any.whl (19 kB)
+Collecting packaging
+  Downloading packaging-20.8-py2.py3-none-any.whl (39 kB)
+Collecting filelock
+  Using cached filelock-3.0.12-py3-none-any.whl (7.6 kB)
+Collecting sacremoses
+  Using cached sacremoses-0.0.43.tar.gz (883 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.2-py2.py3-none-any.whl (136 kB)
+Collecting idna<3,>=2.5
+  Downloading idna-2.10-py2.py3-none-any.whl (58 kB)
+Collecting chardet<5,>=3.0.2
+  Downloading chardet-4.0.0-py2.py3-none-any.whl (178 kB)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2020.12.5-py2.py3-none-any.whl (147 kB)
+Collecting pyparsing>=2.0.2
+  Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
+Collecting six
+  Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+Collecting click
+  Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+Collecting joblib
+  Downloading joblib-1.0.0-py3-none-any.whl (302 kB)
+Installing collected packages: regex, tqdm, tokenizers, urllib3, idna, chardet, certifi, requests, numpy, dataclasses, pyparsing, packaging, filelock, six, click, joblib, sacremoses, transformers
+    Running setup.py install for sacremoses: started
+    Running setup.py install for sacremoses: finished with status 'done'
+Successfully installed certifi-2020.12.5 chardet-4.0.0 click-7.1.2 dataclasses-0.8 filelock-3.0.12 idna-2.10 joblib-1.0.0 numpy-1.19.4 packaging-20.8 pyparsing-2.4.7 regex-2020.11.13 requests-2.25.1 sacremoses-0.0.43 six-1.15.0 tokenizers-0.9.4 tqdm-4.55.1 transformers-4.1.1 urllib3-1.26.2
+WARNING: You are using pip version 20.0.2; however, version 20.3.3 is available.
+You should consider upgrading via the '/data/s2964007/python_envs/python_envs/bin/python3 -m pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "run_mlm.py", line 30, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+
+
+###############################################################################
+Peregrine Cluster
+Job 16570786 for user 's2964007'
+Finished at: Mon Jan  4 12:03:47 CET 2021
+
+Job details:
+============
+
+Job ID              : 16570786
+Name                : BERT_Finetuning
+User                : s2964007
+Partition           : gpushort
+Nodes               : pg-gpu33
+Number of Nodes     : 1
+Cores               : 12
+State               : FAILED
+Submit              : 2021-01-04T12:02:42
+Start               : 2021-01-04T12:02:42
+End                 : 2021-01-04T12:03:47
+Reserved walltime   : 01:00:00
+Used walltime       : 00:01:05
+Used CPU time       : 00:00:16 (efficiency:  2.15%)
+% User (Computation): 71.45%
+% System (I/O)      : 28.54%
+Mem reserved        : 4000M/node
+Max Mem used        : 51.36M (pg-gpu33)
+Max Disk Write      : 53.45M (pg-gpu33)
+Max Disk Read       : 72.56M (pg-gpu33)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################
