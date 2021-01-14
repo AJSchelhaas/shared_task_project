@@ -109,9 +109,18 @@ def process_data(sentence_list, label_list, tokenizer):
 
 
 def create_model(size_train_dataloader, epochs):
+	model_dir = "bert-large-cased"
+	labels_amount = 3
+
+	# Only used for HateBERT
+	'''
+	config = BertConfig.from_pretrained(model_dir)
+	config.num_labels = labels_amount
+	'''
+
 	model = BertForTokenClassification.from_pretrained(
-		"bert-base-cased",
-		num_labels=3,
+		model_dir,
+		num_labels=labels_amount,
 		output_attentions=False,
 		output_hidden_states=False
 	)
@@ -230,18 +239,6 @@ def train_model(model, scheduler, optimizer, train_dataloader, valid_dataloader,
 		validation_loss_values.append(eval_loss)
 		print("Validation loss: {}".format(eval_loss))
 
-		pred_tags = [p_i for p, l in zip(predictions, true_labels)
-					 for p_i, l_i in zip(p, l) if l_i != 2]
-		valid_tags = [l_i for l in true_labels
-					  for l_i in l if l_i != 2]
-
-		#print(type(pred_tags))
-		#print(type(valid_tags))
-
-
-
-		#print("Validation Accuracy: {}".format(accuracy_score(pred_tags, valid_tags)))
-		#print("Validation F1-Score: {}".format(f1_score(pred_tags, valid_tags)))
 	return model
 
 
