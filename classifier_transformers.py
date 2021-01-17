@@ -277,7 +277,7 @@ def predict_sentence(model, tokenizer, predict_sentence):
 def write_results(results, filename):
 	with open(filename, "w", encoding='utf-8') as f:
 		for result in results:
-			result_string = '"' + str(result[0]) + '","' + str(result[1]) + '"\n'
+			result_string = str(index) + "\t" + str(result[0]) + "\n"
 			f.write(result_string)
 
 
