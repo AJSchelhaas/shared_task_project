@@ -44,10 +44,10 @@ def read_predict_file(predict_file, sentence_row=1):
 	with open(predict_file, "r", encoding='utf-8') as f:
 		data = csv.reader(f, delimiter=',', quotechar='"')
 		for row in data:
-			label_list.append(row[0])
-			sentence_list.append(row[sentence_row])
+			#label_list.append(row[0])
+			sentence_list.append(row[0])
 
-	return sentence_list[1:], label_list[1:]
+	return sentence_list
 
 
 def tokenize_and_preserve_labels(sentence, text_labels, tokenizer):
@@ -109,16 +109,18 @@ def process_data(sentence_list, label_list, tokenizer):
 
 
 def create_model(size_train_dataloader, epochs):
-	model_dir = "HateBERT/offenseval"
+	model_dir = "bert-large-cased"
 	labels_amount = 3
 
 	# Only used for HateBERT
-
+	'''
 	config = BertConfig.from_pretrained(model_dir)
 	config.num_labels = labels_amount
+	'''
 
 	model = BertForTokenClassification.from_pretrained(
 		model_dir,
+		num_labels=labels_amount,
 		output_attentions=False,
 		output_hidden_states=False
 	)
@@ -274,8 +276,8 @@ def predict_sentence(model, tokenizer, predict_sentence):
 
 def write_results(results, filename):
 	with open(filename, "w", encoding='utf-8') as f:
-		for index, result in enumerate(results):
-			result_string = str(index) + "\t" + str(result[0]) + "\n"
+		for result in results:
+			result_string = '"' + str(result[0]) + '","' + str(result[1]) + '"\n'
 			f.write(result_string)
 
 
@@ -304,7 +306,8 @@ def main(train=False, predict_file=None):
 		model = torch.load("toxic_classifier.model")
 
 	# Predict
-	sentence_list, label_list = read_predict_file("Data/Source/tsd_trial.csv", 1)
+	
+	sentence_list = read_predict_file(predict_file)
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)
@@ -321,5 +324,5 @@ if __name__ == "__main__":
 	predict_file = None
 	if len(sys.argv) > 2:
 		predict_file = sys.argv[2]
-
+		print(predict_file)
 	main(train_mode, predict_file)
