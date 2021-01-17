@@ -47,7 +47,7 @@ def read_predict_file(predict_file, sentence_row=1):
 			label_list.append(row[0])
 			sentence_list.append(row[sentence_row])
 
-	return sentence_list, label_list
+	return sentence_list[1:], label_list[1:]
 
 
 def tokenize_and_preserve_labels(sentence, text_labels, tokenizer):
@@ -109,18 +109,16 @@ def process_data(sentence_list, label_list, tokenizer):
 
 
 def create_model(size_train_dataloader, epochs):
-	model_dir = "bert-large-cased"
+	model_dir = "HateBERT/offenseval"
 	labels_amount = 3
 
 	# Only used for HateBERT
-	'''
+
 	config = BertConfig.from_pretrained(model_dir)
 	config.num_labels = labels_amount
-	'''
 
 	model = BertForTokenClassification.from_pretrained(
 		model_dir,
-		num_labels=labels_amount,
 		output_attentions=False,
 		output_hidden_states=False
 	)
@@ -276,8 +274,8 @@ def predict_sentence(model, tokenizer, predict_sentence):
 
 def write_results(results, filename):
 	with open(filename, "w", encoding='utf-8') as f:
-		for result in results:
-			result_string = '"' + str(result[0]) + '","' + str(result[1]) + '"\n'
+		for index, result in enumerate(results):
+			result_string = str(index) + "\t" + str(result[0]) + "\n"
 			f.write(result_string)
 
 
