@@ -36,7 +36,7 @@ def read_data(data_file):
 		sentence_list.append(current_token_list)
 		label_list.append(current_label_list)
 
-	return sentence_list, label_list
+	return sentence_list[1:], label_list[1:]
 
 
 def read_predict_file(predict_file, sentence_row=1):
@@ -45,9 +45,9 @@ def read_predict_file(predict_file, sentence_row=1):
 		data = csv.reader(f, delimiter=',', quotechar='"')
 		for row in data:
 			#label_list.append(row[0])
-			sentence_list.append(row[0])
+			sentence_list.append(row[sentence_row])
 
-	return sentence_list
+	return sentence_list[1:]
 
 
 def tokenize_and_preserve_labels(sentence, text_labels, tokenizer):
@@ -307,7 +307,7 @@ def main(train=False, predict_file=None):
 
 	# Predict
 	
-	sentence_list = read_predict_file(predict_file)
+	sentence_list = read_predict_file(predict_file, 0)
 	results = []
 	for sentence in sentence_list:
 		result = predict_sentence(model, tokenizer, sentence)
