@@ -243,7 +243,7 @@ def train_model(model, scheduler, optimizer, train_dataloader, valid_dataloader,
 
 
 def predict_sentence(model, tokenizer, predict_sentence):
-	tokenized_sentence = tokenizer.encode(predict_sentence)
+	tokenized_sentence = tokenizer.encode(predict_sentence[:512])
 	input_ids = torch.tensor([tokenized_sentence]).cuda()
 
 	with torch.no_grad():
@@ -262,10 +262,12 @@ def predict_sentence(model, tokenizer, predict_sentence):
 
 	# retrieve spans of toxic tokens
 	result_spans = set()
+	toxic_labels = []
 	for token, label in zip(new_tokens, new_labels):
 		token_escape = re.escape(token)
 		p = re.compile(token_escape)
 		if label == 1:
+			toxic_labels.append(token)
 			for m in p.finditer(predict_sentence):
 				if m is not None:
 					for i in range(m.start(), m.end()):
@@ -277,7 +279,8 @@ def predict_sentence(model, tokenizer, predict_sentence):
 def write_results(results, filename):
 	with open(filename, "w", encoding='utf-8') as f:
 		for index, result in enumerate(results):
-			result_string = str(index) + "\t" + str(result[0]) + "\n"
+			result_list = sorted(result[0])
+			result_string = str(index) + "\t" + str(result_list) + "\n"
 			f.write(result_string)
 
 
@@ -292,7 +295,8 @@ def main(train=False, predict_file=None):
 	tokenizer = BertTokenizer.from_pretrained('bert-large-cased', do_lower_case=False)
 
 	# Read data
-	sentence_list, label_list = read_data("Data/Silver/train_data_with_silver_1.conll")
+	# sentence_list, label_list = read_data("Data/Silver/train_data_with_silver_1.conll")
+	sentence_list, label_list = read_data("Data/CoNLL-U/converted_data_train.conll")
 
 	# Process data
 	train_dataloader, valid_dataloader = process_data(sentence_list, label_list, tokenizer)
